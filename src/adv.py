@@ -50,5 +50,46 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-player = Player("Jackie", room["outside"])
-direction = {"n": n_to, "s": s_to, "w": w_to, "e": e_to, "q": quit()}
+name = input("Tell me your name, Human")
+player = Player(name, room["outside"])
+print(f"Hello {name}. Walk into te rooms and collect the coins {player.room.name}")
+
+while True:
+    direction = {"n": "n_to", "s": "s_to", "w": "w_to", "e": "e_to", "q": "quit"}
+    print(player.room.description)
+
+    movement = input("Choose year direction", {name})
+    walking = direction[movement]
+
+    if direction == "n" or direction == "N":
+        your_move = player.room.n_to
+        if your_move == None:
+            print("You can't go that direction. Try a different direction.")
+    else:
+        player = Player(name, your_move)
+        print(player)
+
+    elif direction == "s" or direction == "S":
+        your_move = player.room.s_to
+        if your_move == None:
+            print("You can't go that direction. Try a different direction.")
+    else:
+        player = Player(name, your_move)
+        print(player)
+
+    elif direction == "e" or direction == "E":
+         your_move = player.room.e_to
+         if your_move == None:
+             print("You can't go that direction. Try a different direction.")
+    else:
+         player = Player(name, your_move)
+         print(player)
+
+    elif direction == "w" or direction == "W":
+         your_move = player.room.w_to
+         if your_move == None:
+         print("You can't go that direction. Try a different direction.")
+
+    else:
+        player = Player(name, your_move)
+        print(player)
