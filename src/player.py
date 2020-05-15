@@ -9,4 +9,4 @@ class Player:
         self.items = []
 
     def __str__(self):
-        return f"{self.name} you are in {self.room}"
+        return (self.name, self.room, self.items)

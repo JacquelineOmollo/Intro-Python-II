@@ -48,48 +48,59 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
-#
+
 # If the user enters "q", quit the game.
-name = input("Tell me your name, Human")
+name = input("Tell me your name, Human: ")
+
+#current room name
 player = Player(name, room["outside"])
-print(f"Hello {name}. Walk into te rooms and collect the coins {player.room.name}")
+print(f"Hello {name}. Walk into the rooms and collect the coins. You are currently in the {player.room.name}")
 
 while True:
-    direction = {"n": "n_to", "s": "s_to", "w": "w_to", "e": "e_to", "q": "quit"}
+    directions = input("Please pick a direction using:  'n' , 's' , 'w', 'e', 'q to quit'")
     print(player.room.description)
 
-    movement = input("Choose year direction", {name})
-    walking = direction[movement]
-
-    if direction == "n" or direction == "N":
-        your_move = player.room.n_to
-        if your_move == None:
+    movement = input("Choose year direction: ")
+     
+    walking = directions[movement]
+    
+    if directions == "n" or directions == "N":
+        player.room = player.room.n_to
+        if player.room == None:
             print("You can't go that direction. Try a different direction.")
-    else:
-        player = Player(name, your_move)
-        print(player)
+    
+        else:
+            player = Player(name, player.room)
+            print(player)
+        
 
-    elif direction == "s" or direction == "S":
-        your_move = player.room.s_to
-        if your_move == None:
+    elif directions == "s" or directions == "S":
+        player.room= player.room.s_to
+        if player.name == None:
             print("You can't go that direction. Try a different direction.")
-    else:
-        player = Player(name, your_move)
-        print(player)
+             
+        else:
+            player = Player(name,player.room)
+            print(player)
 
-    elif direction == "e" or direction == "E":
-         your_move = player.room.e_to
-         if your_move == None:
-             print("You can't go that direction. Try a different direction.")
-    else:
-         player = Player(name, your_move)
-         print(player)
+    elif directions == "e" or directions == "E":
+       player.room = player.room.e_to 
+       if player.room == None:
+            print("You can't go that direction. Try a different direction.")
+        
+        else:
+            player = Player(name,player.room)
+            print(player)
 
-    elif direction == "w" or direction == "W":
-         your_move = player.room.w_to
-         if your_move == None:
-         print("You can't go that direction. Try a different direction.")
+    elif directions == "w" or directions == "W":
+       player.room = player.room.w_to
+        ifplayer.room == None:
+           print("You can't go that direction. Try a different direction.")
 
-    else:
-        player = Player(name, your_move)
-        print(player)
+        else:
+            player = Player(name,player.room)
+            print(player)
+            
+    elif directions == "q" or directions == "Q":
+            print("Have a nice day human")
+            break
